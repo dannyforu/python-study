@@ -2,6 +2,7 @@
 # define functions for sort algorithm
 # By yanxing
 
+#插入排序
 def insertsort(x):
     for i in range(len(x)):
         startx=0;
@@ -18,6 +19,7 @@ def insertsort(x):
         x[startx]=y
     return
 
+#冒泡排序
 def bublesort(x):
     for i in range(len(x)):
         for j in range(0,len(x)-i-1):
@@ -25,6 +27,7 @@ def bublesort(x):
                 x[j],x[j+1]=x[j+1],x[j]
     return
 
+#选择排序
 def selectsort(x):
     for i in range(len(x)):
         t0=i
@@ -174,4 +177,32 @@ def quicksort(x,start,end):
     x[i]=key
     quicksort(x,start,i-1)
     quicksort(x,i+1,end)
+    return
+
+#希尔排序
+def shellsort(x):
+    #print("5")
+    shellpass(x,5)
+    shellpass(x,2)
+    shellpass(x,1)
+    return
+
+def shellpass(x,d):
+    xlen=len(x)
+    i=0
+    while i<d:
+        j=i+d
+        #print(i)
+        while j<xlen:
+            key=x[j]
+            t=j-d
+            while t>=i:
+                if x[t]>=key:
+                    x[t+d]=x[t]
+                    t-=d
+                else:
+                    break
+            x[t+d]=key
+            j+=d
+        i+=1
     return
